@@ -2,6 +2,12 @@
 #include "Function_Protocol.h"
 #include <iostream>
 
+struct Node
+{
+	int Element;
+	Position Next;
+};
+
 int
 BinarySearch(const int A[],int X,int N)
 {
