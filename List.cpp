@@ -2,12 +2,6 @@
 #include "Function_Protocol.h"
 #include <iostream>
 
-struct Node
-{
-	int Element;
-	Position Next;
-};
-
 int
 BinarySearch(const int A[],int X,int N)
 {
@@ -93,8 +87,31 @@ Insert(int X, List L, Position P)
 	TmpCell = (Position)malloc(sizeof(struct Node));
 	if (TmpCell == NULL)
 		printf("Out of Memory!");
-	
+
 	TmpCell->Element = X;
 	TmpCell->Next = P->Next;
 	P->Next = TmpCell;
+}
+
+void DeleteList(List L)
+{
+	Position P,Tmp;
+	P = L->Next;
+	L->Next = NULL;
+	while (P != NULL)
+	{
+		Tmp = P->Next;
+		free(P);
+		P = Tmp;
+	}
+}
+
+void
+ZeroPolynomial(Polynomial Poly)
+{
+	int i;
+
+	for( i = 0 ; i<= MaxDegree; i++)
+		Poly->CoeffArray[i] = 0;
+	Poly->HighPower = 0;
 }
