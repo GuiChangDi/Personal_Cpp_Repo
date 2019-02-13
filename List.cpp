@@ -1,5 +1,4 @@
-#include "ADP.h"
-#include "Function_Protocol.h"
+#include "List.h"
 #include <iostream>
 
 int
@@ -115,3 +114,16 @@ ZeroPolynomial(Polynomial Poly)
 		Poly->CoeffArray[i] = 0;
 	Poly->HighPower = 0;
 }
+
+Node *
+search_list(Node *node, void const *value, int(*compare)(void const *, void const *))
+{
+	while (node != NULL)
+	{
+		if (compare(&node->Element, value) == 0)
+			break;
+		node = node->Next;
+	}
+	return node;
+}
+
