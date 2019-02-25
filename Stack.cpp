@@ -38,3 +38,27 @@ void Pop(Stack S)
 		free(P);
 	}
 }
+
+void
+Push(int X, Stack S)
+{
+	Stack P;
+	P = (Stack)malloc(sizeof(Stack));
+	if (P == NULL)
+		std::cout << "Out of space" << std::endl;
+	else {
+		P->Element = X;
+		P->Next = S;
+		S->Next = P;
+	}
+}
+
+int
+Top(Stack S)
+{
+	if (IsEmpty(S))
+		std::cout << "Stack is Empty" << std::endl;
+	else
+		return S->Next->Element;
+}
+
