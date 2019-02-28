@@ -11,7 +11,7 @@ void
 MakeEmpty(Stack S)
 {
 	if (S == NULL)
-		std::cout << "Header can't be NULL" << std:endl;
+		std::cout << "Header can't be NULL" << std::endl;
 	else
 		while (!IsEmpty(S))
 			Pop(S);
@@ -26,6 +26,7 @@ CreateStack(void)
 		std::cout << "Out of space" << std::endl;
 	S->Next = NULL;
 	MakeEmpty(S);
+	return S;
 }
 
 void Pop(Stack S)

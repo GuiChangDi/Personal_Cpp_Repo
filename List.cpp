@@ -33,11 +33,13 @@ Gcd(uint M, uint N)
 	return M;
 }
 
+/*
 int 
 IsEmpty(List L)
 {
 	return L->Next == NULL;
 }
+*/
 
 int
 IsLast(Position P, List L)

@@ -25,7 +25,7 @@ int BinarySearch(const int A[], int X, int N);
 uint Gcd(uint M, uint N);
 //List function declare
 List ListMakeEmpty(List L);
-int IsEmpty(List L);
+//int IsEmpty(List L);
 int IsLast(Position P, List L);
 Position Find(int X, List L);
 void Delete(int X, List L);
