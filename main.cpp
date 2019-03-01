@@ -7,6 +7,6 @@ int main()
 	uint a;
 	a = Gcd(20, 3);
 	cout << a << endl;
-	std::cin.get();
+	system("pause");
     return 0;
 }

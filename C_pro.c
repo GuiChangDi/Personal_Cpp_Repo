@@ -23,7 +23,7 @@ enum type_tag classify_string(void)
 {
 	char *s = this.string;
 	if (!strcmp(s, "const")) {
-		strcpy(s, "read-only");
+		strcpy_s(s, 9,"read-only");
 		return QUALIFIER;
 	}
 	if (!strcmp(s, "volatile")) return QUALIFIER;
@@ -59,7 +59,7 @@ void gettoken(void)
 	}
 
 	if (*p == '*') {
-		strcpy(this.string, "pointer to");
+		strcpy_s(this.string, 10,"pointer to");
 		this.type = '*';
 		return;
 	}
@@ -128,6 +128,7 @@ deal_with_declarator() {
 	}
 }
 
+/*
 main()
 {
 	//push label to stack until reach identifer
@@ -136,3 +137,4 @@ main()
 	printf("\n");
 	return 0;
 }
+*/
