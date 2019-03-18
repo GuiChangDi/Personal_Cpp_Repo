@@ -100,3 +100,4 @@ Delete(int X, SearchTree T)
 			}
 	return T;
 }
+
