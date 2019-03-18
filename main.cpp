@@ -1,12 +1,11 @@
 #include <iostream>
-#include "List.h"
+#include "Header/Order.h"
 using namespace std;
 
 int main()
 {
-	uint a;
-	a = Gcd(20, 3);
-	cout << a << endl;
+	int a[10];
+	bucket(a, 10);
 	system("pause");
     return 0;
 }

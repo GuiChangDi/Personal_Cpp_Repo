@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Tree.h"
+#include "../Header/Tree.h"
 struct TreeNode
 {
 	int Element;

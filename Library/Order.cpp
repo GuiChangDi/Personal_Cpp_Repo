@@ -1,4 +1,4 @@
-#include "Order.h"
+#include "../Header/Order.h"
 #include <iostream>
 int bucket(int a[], int n) {
 	int i, t;
@@ -19,5 +19,7 @@ int bucket(int a[], int n) {
 		for (int j = 1; j <= a[i]; j++)
 			std::cout << i ;
 	}
+
+	std::cout<<std::endl;
 	return 1;
 }
