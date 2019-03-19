@@ -26,3 +26,4 @@ Queue CreateQueue(int num)
 	S->Capacity = num;
 	return S;
 }
+

@@ -62,4 +62,3 @@ Top(Stack S)
 	else
 		return S->Next->Element;
 }
-

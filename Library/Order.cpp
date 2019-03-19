@@ -118,3 +118,138 @@ int removemutli(int a[], int n)
 	std::cout << "Total count number: " << num << std::endl;
 	return 1;
 }
+
+//Use stack to judge string whether is palindrome
+void Judgepalindrome()
+{
+	int a[100];
+	char b[10];
+	int i;
+	int mid, next, top = -1;
+	std::cin >> b;
+	int len = strlen(b);
+	if (len % 2 == 0)
+	{
+		mid = len / 2;
+		next = mid + 1;
+	}
+	else
+	{
+		mid = len / 2 + 1;
+		next = mid;
+	}
+
+	for (i = 0; i < mid; i++)
+		a[++top] = b[i];
+	for (i = next - 1; i < len; i++)
+	{
+		if (b[i] != a[top])
+			break;
+		top--;
+	}
+	if (top != -1)
+		std::cout << "Not" << std::endl;
+	else
+		std::cout << "Yes" << std::endl;
+}
+
+//Use 2 queue and 1 stack to determing which person will win
+void Catfish(int a[], int b[], int n)
+{
+	//initilize queue and stack
+	struct queue qu1, qu2;
+	struct stack s;
+	int flag = 0;//indicate whether there is match on table.
+	int mark[10];//array indicate current number we have
+	static int count = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		qu1.data[i] = a[i];
+		qu2.data[i] = b[i];
+	}
+	for (int i = 1; i <= 9; i++)
+		mark[i] = 0;
+
+	qu1.head = qu2.head = 0;
+	qu1.tail = qu2.tail = 10;
+	s.top = -1;
+
+
+	while ((qu1.head != qu1.tail) && (qu2.head != qu2.tail) && count <=100)//Set boundary conditions: Person A or Person B have no cards,or Round num up to 100.
+	{
+		//Person A put out card.
+		int t1 = qu1.data[qu1.head];//person A put a card
+		//Judge if there is the same card number on the table
+		if(mark[t1] == 0)//there is no same card on the table
+		{
+			//make t1 out queue,and push to stack
+			qu1.head++;
+			s.data[++s.top] = t1;
+			mark[t1] = 1;//mark there is already have card value as t1
+		}
+		else//there already have the same card on the table
+		{
+			//make t1 out queue
+			qu1.head++;
+			qu1.data[qu1.tail++] = t1;//push to end of queue
+			while (s.data[s.top] != t1)//Place the card number on table to queue one by one until to the same card number.
+			{
+				mark[s.data[s.top]] = 0;//unmark
+				qu1.data[qu1.tail++] = s.data[s.top];
+				s.top--;
+			}
+		}
+
+		//Person B put out card.
+		int t2 = qu2.data[qu2.head];//person B put a card
+		//Judge if there is the same card number on the table
+		if (mark[t2] == 0)//there is no same card on the table
+		{
+			qu2.head++;//card out of queue
+			s.data[++s.top] = t2;//card put in to stack
+			mark[t2] = 1;//mark card on the table
+		}
+		else//there already have the same card on the table
+		{
+			qu2.head++;//card t2 out queue
+			qu2.data[qu2.tail++] = t2;//push t2 to end of queue
+			while (s.data[s.top] != t2)//Place the card number on table to queue one by one until to the same card number.
+			{
+				mark[s.data[s.top]] = 0;//unmark
+				qu2.data[qu2.tail++] = s.data[s.top];
+				s.top--;
+			}
+		}
+		count++;//round num 
+	}
+
+	//Judge who win the game
+	if (qu2.head == qu2.tail)//Person A win this game
+	{
+		std::cout << "Person A win! His cards number is: " << std::endl;
+		for (int i = qu1.head; i < qu1.tail; i++)//show Person A card number
+			std::cout << qu1.data[i] << " ";
+		if (s.top > 0)
+		{
+			std::cout << "The table cards: ";
+			for (int i = 0; i <= s.top; i++)
+				std::cout << s.data[i] << " ";
+		}
+		else
+			std::cout << "\nThere is no card on the table!";
+	}
+	else//Person B win this game
+	{
+		std::cout << "Person B win! His cards number is: " << std::endl;
+		for (int i = qu2.head; i < qu2.tail; i++)//show Person B card number
+			std::cout << qu2.data[i] << " ";
+		if (s.top > 0)
+		{
+			std::cout << "The table cards: ";
+			for (int i = 0; i <= s.top; i++)
+				std::cout << s.data[i] << " ";
+		}
+		else
+			std::cout << "\nThere is no card on the table!";
+	}
+}
