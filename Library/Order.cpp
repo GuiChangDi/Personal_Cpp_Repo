@@ -154,28 +154,38 @@ void Judgepalindrome()
 }
 
 //Use 2 queue and 1 stack to determing which person will win
-void Catfish(int a[], int b[], int n)
+void Catfish(int n)
 {
 	//initilize queue and stack
 	struct queue qu1, qu2;
 	struct stack s;
 	int flag = 0;//indicate whether there is match on table.
 	int mark[10];//array indicate current number we have
+	qu1.head = qu2.head = 1;
+	qu1.tail = qu2.tail = 1;
+	s.top = 0;
+	
 	static int count = 0;
+	for (int i = 1; i < 9; i++)
+		mark[i] = 0;
+	std::cout << "Input Person A's Cards: \n";
 	for (int i = 1; i <= n; i++)
 	{
-		qu1.data[i] = a[i];
-		qu2.data[i] = b[i];
+		std::cout << "Input the " << i << " Number:";
+		std::cin >> qu1.data[qu1.tail];
+		qu1.tail++;
 	}
-	for (int i = 1; i <= 9; i++)
-		mark[i] = 0;
 
-	qu1.head = qu2.head = 0;
-	qu1.tail = qu2.tail = 10;
-	s.top = -1;
+	std::cout << "Input Person B's Cards: \n";
+	for (int i = 1; i <= n; i++)
+	{
+		std::cout << "Input the " << i << " Number:";
+		std::cin >> qu2.data[qu2.tail];
+		qu2.tail++;
+	}
 
 
-	while ((qu1.head != qu1.tail) && (qu2.head != qu2.tail) && count <=100)//Set boundary conditions: Person A or Person B have no cards,or Round num up to 100.
+ 	while ((qu1.head != qu1.tail) && (qu2.head != qu2.tail) && count <=100)//Set boundary conditions: Person A or Person B have no cards,or Round num up to 100.
 	{
 		//Person A put out card.
 		int t1 = qu1.data[qu1.head];//person A put a card
@@ -226,13 +236,14 @@ void Catfish(int a[], int b[], int n)
 	//Judge who win the game
 	if (qu2.head == qu2.tail)//Person A win this game
 	{
-		std::cout << "Person A win! His cards number is: " << std::endl;
+		std::cout << "Game round: " << count << std::endl;
+		std::cout << "Person A win! \nHis cards number is: ";
 		for (int i = qu1.head; i < qu1.tail; i++)//show Person A card number
 			std::cout << qu1.data[i] << " ";
 		if (s.top > 0)
 		{
-			std::cout << "The table cards: ";
-			for (int i = 0; i <= s.top; i++)
+			std::cout << "\nThe table cards: ";
+			for (int i = 1; i <= s.top; i++)
 				std::cout << s.data[i] << " ";
 		}
 		else
@@ -240,13 +251,14 @@ void Catfish(int a[], int b[], int n)
 	}
 	else//Person B win this game
 	{
-		std::cout << "Person B win! His cards number is: " << std::endl;
+		std::cout << "Game round: " << count << std::endl;
+		std::cout << "Person B win! \nHis cards number is: ";
 		for (int i = qu2.head; i < qu2.tail; i++)//show Person B card number
 			std::cout << qu2.data[i] << " ";
 		if (s.top > 0)
 		{
-			std::cout << "The table cards: ";
-			for (int i = 0; i <= s.top; i++)
+			std::cout << "\nThe table cards: ";
+			for (int i = 1; i <= s.top; i++)
 				std::cout << s.data[i] << " ";
 		}
 		else

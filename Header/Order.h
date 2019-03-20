@@ -18,4 +18,4 @@ int bubble(int a[], int n);
 int rapidorder(int a[], int left, int right);
 int removemutli(int a[], int n);
 void Judgepalindrome();
-void Catfish(int a[], int b[], int n);
+void Catfish(int n);
