@@ -265,3 +265,71 @@ void Catfish(int n)
 			std::cout << "\nThere is no card on the table!";
 	}
 }
+
+static int fun(int x)//caculate how many sticks x need. 
+{
+	int num = 0;
+	int a[10] = { 4,2,5,5,4,5,6,3,7,6 };
+	while (x / 10 != 0)
+	{
+		num += a[x % 10];
+		x /= 10;
+	}
+		num += a[x];
+	return num;
+}
+
+int enumMath(int n)//A+B = C.Enumerate all possible results.n is stick number.+,= needs 4 stick
+{
+	int num_max = 1111;
+	int A, B,C,sum = 0;
+	for (A = 0; A <= num_max; A++)
+	{
+		for (B = 0; B <= num_max; B++)
+		{
+			C = A + B;
+			if (fun(A) + fun(B) + fun(C) == n - 4)
+				std::cout << A << " + " << B << " = " << C<<std::endl;
+				sum++;
+		}
+	}
+	std::cout << "Total results number: " << sum;
+	return sum;
+}
+
+//Full Permutation
+int Per1[10], Per2[10];
+void Permutation(int num,int n)
+{
+	int i;
+	static int count = 0;
+
+	//Up to max num
+	if (num == n)
+	{
+		count++;
+		for (i = 0; i < n; i++)
+			std::cout << Per1[i] << " ";
+		std::cout << std::endl;
+		std::cout << "The " << count << " Result" << std::endl;
+		std::cout << std::endl;
+		return;
+	}
+
+	for (i = 0; i < n; i++)
+	{
+		if (Per2[i] == 0)
+		{
+			Per1[num] = i;
+			Per2[i] = 1;
+
+			//Now through recursive
+			Permutation(num + 1,n);
+			Per2[i] = 0;//try to retrive the i number
+		}
+	}
+	return;
+}
+
+//Found the short path to target
+void CurrentStatus(int x,int y,int step)//step means so far steps we have go

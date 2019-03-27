@@ -14,7 +14,7 @@ static int printarray(int a[], int n)
 
 int main()
 {
-	Catfish(6);
+	Permutation(0,5);
 	std::cin.get();
 	std::cin.get();
     return 0;
