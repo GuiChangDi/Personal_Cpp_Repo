@@ -1,2 +1,2 @@
-# Algorithm_Training
-Personal Algorithm Train
+# Algorithm_Cpp
+Personal Algorithm and cpp grammer train
