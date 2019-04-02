@@ -332,10 +332,10 @@ void Permutation(int num,int n)//n: the permutation range,num: the location so f
 }
 
 //Found the short path to target,DFS
-int n, m, p, q, min = 99999999;
-int map[51][51], book[51][51];  //a[] record whether this point is obstacle, book[51] record whether this point has been in the path.
 void CurrentStatus_DFS(int x, int y, int step)//step means so far steps we have go  
 {
+	int n, m, p, q, min = 99999999;
+	int map[51][51], book[51][51];  //a[] record whether this point is obstacle, book[51] record whether this point has been in the path.
 	int next[4][2] = { {0,1},{1,0},{0,-1},{-1,0} }; //four direction to go,Right Down,Left,Right
 	int tx, ty, k;
 	if (x == p && x == q)
