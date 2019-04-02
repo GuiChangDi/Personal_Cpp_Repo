@@ -299,7 +299,7 @@ int enumMath(int n)//A+B = C.Enumerate all possible results.n is stick number.+,
 
 //Full Permutation
 int Per1[10], Per2[10];
-void Permutation(int num,int n)
+void Permutation(int num,int n)//n: the permutation range,num: the location so far program has been.
 {
 	int i;
 	static int count = 0;
@@ -318,10 +318,10 @@ void Permutation(int num,int n)
 
 	for (i = 0; i < n; i++)
 	{
-		if (Per2[i] == 0)
+		if (Per2[i] == 0)//if i wasn't in Per2[]
 		{
-			Per1[num] = i;
-			Per2[i] = 1;
+			Per1[num] = i;//Put i into the num'st position
+			Per2[i] = 1;//mark i has been used
 
 			//Now through recursive
 			Permutation(num + 1,n);
@@ -331,5 +331,123 @@ void Permutation(int num,int n)
 	return;
 }
 
-//Found the short path to target
-void CurrentStatus(int x,int y,int step)//step means so far steps we have go
+//Found the short path to target,DFS
+int n, m, p, q, min = 99999999;
+int map[51][51], book[51][51];  //a[] record whether this point is obstacle, book[51] record whether this point has been in the path.
+void CurrentStatus_DFS(int x, int y, int step)//step means so far steps we have go  
+{
+	int next[4][2] = { {0,1},{1,0},{0,-1},{-1,0} }; //four direction to go,Right Down,Left,Right
+	int tx, ty, k;
+	if (x == p && x == q)
+	{
+		if(step < min);
+			min = step;
+		return;//Important,otherwise will loop forever
+	}
+
+	//enmurate four direction
+	for (k = 0; k < 4; k++)
+	{
+		//caculate the next coordinate
+		tx = x + next[k][0];
+		ty = y + next[k][1];
+		if (tx < 1 || tx > n || ty < 1 || ty > n)//Judge whether out of range
+			continue;
+		if(map[tx][ty] == 0 && book[tx][ty] == 0)
+		{
+			book[tx][ty] = 1;//Mark this point has been in path
+			CurrentStatus_DFS(tx, ty, step + 1);//Try the next point
+			book[tx][ty] = 0;//Done try,unmark this point;Important!!!!!!!!!!!!!!!!!!!!!
+		}
+	}
+	return;
+}
+
+//Found the shortest way to target,using Breadth First Search,no recursive
+/**
+----------------->Y
+|
+|
+|
+|
+|
+|X
+**/
+
+void CurrentStatus_BFS()
+{
+	struct note
+	{
+		int x;//X-axis
+		int y;//Y-axis
+		int s;//step count
+		int f;//the last position
+	};
+	struct note que[2501];//set map size = 50*50
+	int head, tail;
+	int a[51][51] = { 0 };//store map
+	int book[51][51] = { 0 };//record which point has been in queque,prevent a point being visited repeatly.
+	int next[4][2] = { {0,1},{1,0},{0,-1},{-1,0} };//right,down,left,up
+	int i, j, k, n, m, startx, starty, p, q, tx, ty, flag;
+
+	std::cout << "Input m,n:\n";//Input the map range
+	std::cin >> m >> n;
+
+	std::cout << "Input start position:";
+	std::cin >> startx >> starty;
+
+	std::cout << "Input the destination";
+	std::cin >> p >> q;
+
+	//Initiate queque
+	head = 1;
+	tail = 1;
+	//Add (starts=x,starty) to queque,and mark it.
+	que[tail].x = startx;
+	que[tail].y = starty;
+	que[tail].s = 0;
+	que[tail].f = 0;
+	tail++;
+	book[startx][starty] = 1;//Mark
+	flag = 0;//Indicate whether reach the desitination,0 not reach,1 reach
+	
+	//while que is not empty loop
+	while (head < tail)
+	{
+		//enum the 4 direction
+		for (k = 0; k < 4; k++)
+		{
+			//the next point
+			tx = que[head].x + next[k][0];
+			ty = que[head].y + next[k][1];
+			//Judge whether out of space
+			if (tx < 1 || tx > n || ty < 1 || ty > m)
+				continue;
+			//Judge whether this point is obstacle or already on the path
+			if (a[tx][ty] == 0 && book[tx][ty] == 0)
+			{
+				//Mark this point 
+				//BFS every point only in que for once,no need to restore book[][]
+				book[tx][ty] = 1;
+				//Insert to que
+				que[tail].x = tx;
+				que[tail].y = ty;
+				que[tail].f = head;
+				que[tail].s = que[head].s + 1;
+				tail++;
+			}
+			//If reach the destination,return
+			if (tx == p && ty == q)
+			{
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 1)
+			break;
+		head++;
+	}
+
+	std::cout << "Total step : " << que[tail - 1].s << std::endl;
+}
+

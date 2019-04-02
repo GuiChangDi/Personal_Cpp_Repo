@@ -28,3 +28,5 @@ void Catfish(int n);//Use 2 queue and 1 stack to determing which person will win
 static int fun(int x);//caculate how many sticks x need. 
 int enumMath(int n);//A+B = C.Enumerate all possible results.n is stick number.+,= needs 4 stick
 void Permutation(int num,int n);//Full Permutation
+void CurrentStatus_DFS(int x, int y, int step);//DFS to find the shortest way to target.Use recursive.
+void CurrentStatus_BFS();//BFS to find the shortest way ,no recursive.
