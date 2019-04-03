@@ -445,9 +445,73 @@ void CurrentStatus_BFS()
 		}
 		if (flag == 1)
 			break;
-		head++;
+		head++;//Out que
 	}
-
 	std::cout << "Total step : " << que[tail - 1].s << std::endl;
 }
 
+//Use BFS to count area
+void countarea()
+{
+	struct note
+	{
+		int x;
+		int y;
+	};
+
+	struct note que[2501];//   50*50
+	int head, tail;
+	int a[51][51] = { 0 };
+	int book[51][51] = { 0 };
+	int i, j, k, sum, max = 0, mx, my, n, m, startx, starty, tx, ty;
+	//Direct Array
+	int next[4][2] = { {0,1},{1,0},{0,-1},{-1,0} };
+
+	//Read n row,m line and start position (startx,starty)
+	std::cout << "Input n :";
+	std::cin >> n;
+	std::cout << "Input m :";
+	std::cin >> m;
+	std::cout << "Input (startx,starty):";
+	std::cin >> startx >> starty;
+
+	for (i = 1; i <= n; i++)
+		for (j = 1; j <= n; j++)
+			std::cin >> a[i][j];
+
+	//Init que
+	head = 1;
+	tail = 1;
+	//Insert the Initiate start
+	que[tail].x = startx;
+	que[tail].y = starty;
+	tail++;
+	book[startx][starty] = 1;
+	sum = 1;
+
+	//Loop while que not empty
+	while (head < tail)
+	{
+		//4 direction
+		for (k = 0; k < 4; k++)
+		{
+			tx = que[head].x + next[k][0];
+			ty = que[head].y + next[k][1];
+
+			//Judge whether out of space
+			if (tx < 1 || tx > n || ty < 1 || ty > m)
+				continue;
+			//Judge whether in the path or not accessible
+			if (book[tx][ty] == 0 && a[tx][ty] > 0)
+			{
+				book[tx][ty] = 1;//Mark in path
+				sum++;
+				que[tail].x = tx;
+				que[tail].y = ty;
+				tail++;
+			}
+		}
+		head++;//After 1 point ,out que
+	}
+	std::cout << "Total area = " << sum;
+}

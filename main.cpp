@@ -14,7 +14,7 @@ static int printarray(int a[], int n)
 
 int main()
 {
-	Permutation(0,5);
+	countarea();
 	std::cin.get();
 	std::cin.get();
     return 0;

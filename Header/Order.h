@@ -30,3 +30,4 @@ int enumMath(int n);//A+B = C.Enumerate all possible results.n is stick number.+
 void Permutation(int num,int n);//Full Permutation
 void CurrentStatus_DFS(int x, int y, int step);//DFS to find the shortest way to target.Use recursive.
 void CurrentStatus_BFS();//BFS to find the shortest way ,no recursive.
+void countarea();//BFS to caculate total area
