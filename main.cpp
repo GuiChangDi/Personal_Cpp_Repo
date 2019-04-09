@@ -14,7 +14,9 @@ static int printarray(int a[], int n)
 
 int main()
 {
-	countarea();
+	int a[] = {2,3,4,2,5,6,4,7,34,23,43,54};
+	rapidorder(a,0,11);
+	printarray(a,12);
 	std::cin.get();
 	std::cin.get();
     return 0;

@@ -1,5 +1,6 @@
 #include "../Header/Order.h"
 #include <iostream>
+#include <string.h>
 
 //Time complexity = O(N)  
 int bucket(int a[], int n) {
@@ -89,6 +90,7 @@ int rapidorder(int a[],int left, int right)
 	//recursion
 	rapidorder(a, left, i - 1);
 	rapidorder(a, i + 1, right);
+	return 1;
 }
 
 //Remove repeat elem in array and sort
@@ -159,7 +161,6 @@ void Catfish(int n)
 	//initilize queue and stack
 	struct queue qu1, qu2;
 	struct stack s;
-	int flag = 0;//indicate whether there is match on table.
 	int mark[10];//array indicate current number we have
 	qu1.head = qu2.head = 1;
 	qu1.tail = qu2.tail = 1;
@@ -338,6 +339,8 @@ void CurrentStatus_DFS(int x, int y, int step)//step means so far steps we have 
 	int map[51][51], book[51][51];  //a[] record whether this point is obstacle, book[51] record whether this point has been in the path.
 	int next[4][2] = { {0,1},{1,0},{0,-1},{-1,0} }; //four direction to go,Right Down,Left,Right
 	int tx, ty, k;
+	std::cin>>p>>q;
+	std::cin>>n>>m;
 	if (x == p && x == q)
 	{
 		if(step < min);
@@ -351,7 +354,7 @@ void CurrentStatus_DFS(int x, int y, int step)//step means so far steps we have 
 		//caculate the next coordinate
 		tx = x + next[k][0];
 		ty = y + next[k][1];
-		if (tx < 1 || tx > n || ty < 1 || ty > n)//Judge whether out of range
+		if (tx < 1 || tx > n || ty < 1 || ty > m)//Judge whether out of range
 			continue;
 		if(map[tx][ty] == 0 && book[tx][ty] == 0)
 		{
