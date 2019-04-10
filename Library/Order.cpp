@@ -290,8 +290,10 @@ int enumMath(int n)//A+B = C.Enumerate all possible results.n is stick number.+,
 		{
 			C = A + B;
 			if (fun(A) + fun(B) + fun(C) == n - 4)
+			{
 				std::cout << A << " + " << B << " = " << C<<std::endl;
 				sum++;
+			}
 		}
 	}
 	std::cout << "Total results number: " << sum;
@@ -391,7 +393,7 @@ void CurrentStatus_BFS()
 	int a[51][51] = { 0 };//store map
 	int book[51][51] = { 0 };//record which point has been in queque,prevent a point being visited repeatly.
 	int next[4][2] = { {0,1},{1,0},{0,-1},{-1,0} };//right,down,left,up
-	int i, j, k, n, m, startx, starty, p, q, tx, ty, flag;
+	int k, n, m, startx, starty, p, q, tx, ty, flag;
 
 	std::cout << "Input m,n:\n";//Input the map range
 	std::cin >> m >> n;
@@ -466,7 +468,7 @@ void countarea()
 	int head, tail;
 	int a[51][51] = { 0 };
 	int book[51][51] = { 0 };
-	int i, j, k, sum, max = 0, mx, my, n, m, startx, starty, tx, ty;
+	int i, j, k, sum, n, m, startx, starty, tx, ty;
 	//Direct Array
 	int next[4][2] = { {0,1},{1,0},{0,-1},{-1,0} };
 
