@@ -520,3 +520,46 @@ void countarea()
 	}
 	std::cout << "Total area = " << sum;
 }
+
+ struct ListNode {
+     int val;
+     struct ListNode *next;
+ };
+
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
+    int m,i,j;
+    struct ListNode *p1,*p2;
+    p1 = l1;
+    p2 = l2;
+    int temp1 = 0, temp2 = 0;
+    i = j = 0;
+    while(p1 != NULL)
+    {
+        m = p1->val * (10^i);
+        temp1 += m;
+        i++;
+        p1 = p1->next;
+    }
+    
+    while(p2 != NULL)
+    {
+        m = p2->val * (10^j);
+        temp2 += m;
+        j++;
+        p2 = p2->next;
+    }
+    
+    int out = temp1+temp2;
+    int temp;
+    struct ListNode* result;
+    while(out != 0)
+    {
+        temp =  out%10;
+        out /= 10;
+        result->val = temp;
+        struct ListNode* node = (struct ListNode*)malloc(sizeof(struct ListNode));
+        result->next = node;
+        result = result->next;
+    }
+    return result;
+}

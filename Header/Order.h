@@ -31,3 +31,4 @@ void Permutation(int num,int n);//Full Permutation
 void CurrentStatus_DFS(int x, int y, int step);//DFS to find the shortest way to target.Use recursive.
 void CurrentStatus_BFS();//BFS to find the shortest way ,no recursive.
 void countarea();//BFS to caculate total area
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
