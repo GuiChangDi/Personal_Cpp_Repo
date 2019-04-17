@@ -1,21 +1,23 @@
 #include <iostream>
-using namespace std;
+#include <vector>
+#include <array>
+
+int* test();
+
 int main()
 {
-    int *a = new int;
-    *a = 0; 
-    cout<<a<<endl;
-    cout<<*a<<endl;
-    delete a;
-    *a = 0;
-    cout<<a<<endl;
-    cout<<*a<<endl;
-
-    int *b;
-    int c = 1;
-    b = &c;
+    using namespace std;
+    int *b = test();
+    cout<<b<<' '<<*b<<endl;
+    delete b;
     cout<<b<<endl;
-    cout<<*b<<endl;
-
     return 0;
+}
+
+int* test()
+{
+    int* a = new int;
+    *a = 1;
+    std::cout<<a<<std::endl;
+    return a;
 }

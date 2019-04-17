@@ -28,6 +28,25 @@ int bucket(int a[], int n) {
 	return 1;
 }
 
+//BinarySearch no recursive, Time complexity = O(logN)
+int
+BinarySearch(const int A[],int X,int N)
+{
+    int low,mid,high;
+    low = 0,high = N-1;
+    while(low <= high)
+    {
+        mid = (low+high)/2;
+        if(mid == X)
+            return True;
+        else if(A[mid] <= X)
+            low = mid + 1;
+        else if(A[mid] > X)
+            high = mid-1;
+    }
+    return False;
+}
+
 //Time complexity = O(N^2)     if a[i] > a[i+1], switch up 
 int bubble(int a[], int n)
 {
