@@ -38,13 +38,13 @@ BinarySearch(const int A[],int X,int N)
     {
         mid = (low+high)/2;
         if(mid == X)
-            return True;
+            return true;
         else if(A[mid] <= X)
             low = mid + 1;
         else if(A[mid] > X)
             high = mid-1;
     }
-    return False;
+    return false;
 }
 
 //Time complexity = O(N^2)     if a[i] > a[i+1], switch up 
