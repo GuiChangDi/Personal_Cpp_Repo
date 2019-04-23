@@ -48,7 +48,7 @@ void Stock::update(double price)
     set_tot();
 }
 
-void Stock::show()
+void Stock::show() const
 {
     using std::cout;
     using std::ios_base;
@@ -70,6 +70,7 @@ void Stock::show()
 Stock::Stock(const std::string &co,long n,double pr)
 {
     company = co;
+    std::cout<<"Constructor called!"<<std::endl;
     if(n<0)
     {
         std::cout<<"Number of shares can't be negative;"
@@ -87,21 +88,43 @@ Stock::Stock(const std::string &co,long n,double pr)
 
 Stock::Stock()
 {
-    std::cout<<"Default constructor called\n";
+    std::cout<<"Default constructor called!\n";
     company = "None";
     shares = 0;
     share_val = 0.0;
     total_val = 0.0;
 }
 
+Stock::~Stock()
+{
+    std::cout<<"Destructor called!"<<std::endl;
+}
+
+const Stock & Stock::topval(const Stock & s) const
+{
+    if (s.total_val > total_val)
+        return s;
+    else
+        return *this;
+}
+
 int main()
 {
-    Stock p("Intel",20,20);
-    //p.acquire("Intel",20,20);
-    p.show();
-    p.buy(23,15);
-    p.show();
-    p.sell(23,15);
-    p.show();
+    Stock stocks[4] = {
+        Stock("Intel",12,20.0),
+        Stock("Mircosoft",200,20.0),
+        Stock("IBM",130,3.25),
+        Stock("Youtube",60,6.5)
+    };
+
+    std::cout<<"Stock holdings:\n";
+    int st;
+    for(st = 0; st<4 ; st++)
+        stocks[st].show();
+    const Stock *top = &stocks[0];
+    for(st = 1;st<4;st++)
+        top = &top->topval(stocks[st]);
+    std::cout<<"\nMost valuable holding:\n";
+    top->show();
     return 0;
 }
