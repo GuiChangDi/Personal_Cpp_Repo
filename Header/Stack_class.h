@@ -15,5 +15,5 @@ public:
     // push() return false if stack already full, true otherwise.
     bool push(const Item & item);
     // pop() return false if stack already empty, true otherwise.
-    bool pop(const Item & item);
-}
+    bool pop(Item & item);
+};

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Header/Order.h"
+#include "Header/Stack_class.h"
 using namespace std;
 
 static int printarray(int a[], int n)
@@ -14,9 +14,13 @@ static int printarray(int a[], int n)
 
 int main()
 {
-	int a[] = {2,3,4,2,5,6,4,7,34,23,43,54};
-	rapidorder(a,0,11);
-	printarray(a,12);
+	Stack a;
+	a.push(20);
+	a.push(30);
+	unsigned long b,c;
+	a.pop(b);
+	a.pop(c);
+	std::cout<<b<<c<<std::endl;
 	std::cin.get();
 	std::cin.get();
     return 0;
