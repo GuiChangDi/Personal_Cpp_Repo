@@ -36,3 +36,8 @@ bool Stack::pop(Item & item)
         return true;
     }
 }
+
+Stack Stack::operator+(const Stack & s) const
+{
+    
+}
