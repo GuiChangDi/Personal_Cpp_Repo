@@ -1,6 +1,7 @@
 #include "../Header/OOP00.h"
 #include <iostream>
 
+//Stock function definition
 void Stock::acquire(const std::string & co,long n, double pr)
 {
     company = co;
@@ -108,23 +109,67 @@ const Stock & Stock::topval(const Stock & s) const
         return *this;
 }
 
+//Time function definition
+Time::Time()
+{
+    hours = minute = 0;
+}
+
+Time::Time(int h,int m)
+{
+    hours = h;
+    minute = m;
+}
+
+void Time::AddMin(int m)
+{
+    minute += m;
+    hours += (minute/60);
+    minute %= 60;
+}
+
+void Time::AddHr(int h)
+{
+    hours += h;
+}
+
+void Time::Reset(int h,int m)
+{
+    hours = h;
+    minute = m;
+}
+
+Time Time::Sum(const Time & t) const
+{
+    Time result;
+    result.minute = minute + t.minute;
+    result.hours = hours + t.hours + (t.minute)/60;
+    result.minute %= 60;
+    return result;
+}
+
+void Time::Show() const 
+{
+    std::cout<<"Time: "<<hours<<" hours "<<minute<<" minutes\n";
+}
+
+Time Time::operator+(const Time & t) const
+{
+    Time sum;
+    sum.minute = t.minute + minute;
+    sum.hours = t.hours + hours + sum.minute/60;
+    sum.minute %= 60;
+    return sum;
+}
+
 int main()
 {
-    Stock stocks[4] = {
-        Stock("Intel",12,20.0),
-        Stock("Mircosoft",200,20.0),
-        Stock("IBM",130,3.25),
-        Stock("Youtube",60,6.5)
-    };
-
-    std::cout<<"Stock holdings:\n";
-    int st;
-    for(st = 0; st<4 ; st++)
-        stocks[st].show();
-    const Stock *top = &stocks[0];
-    for(st = 1;st<4;st++)
-        top = &top->topval(stocks[st]);
-    std::cout<<"\nMost valuable holding:\n";
-    top->show();
+    Time a(2,30);
+    Time b(3,20);
+    Time c = a+b;
+    c.Show();
+    Time d;
+    d = d.Sum(a);
+    d.Show();
     return 0;
 }

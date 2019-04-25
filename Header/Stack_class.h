@@ -16,5 +16,4 @@ public:
     bool push(const Item & item);
     // pop() return false if stack already empty, true otherwise.
     bool pop(Item & item);
-    Stack operator+(const Stack & s) const;
 };
