@@ -162,14 +162,32 @@ Time Time::operator+(const Time & t) const
     return sum;
 }
 
+Time Time::operator-(const Time & t) const
+{
+    Time sum;
+    int temp1 = hours * 60 + minute;
+    int temp2 = t.hours * 60 + t.minute;
+    sum.hours = (temp1 - temp2) / 60;
+    sum.minute = (temp1 - temp2) % 60;
+    return sum;
+}
+
+Time Time::operator*(double mult) const
+{
+    Time sum;
+    sum.minute = minute * mult;
+    sum.hours = hours * mult + sum.minute /60;
+    sum.minute %= 60;
+    return sum;
+}
+
 int main()
 {
     Time a(2,30);
     Time b(3,20);
-    Time c = a+b;
+    Time c  = b-a;
+    Time d = a * 2;
     c.Show();
-    Time d;
-    d = d.Sum(a);
     d.Show();
     return 0;
 }

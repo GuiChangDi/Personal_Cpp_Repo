@@ -35,4 +35,6 @@ public:
     Time Sum(const Time & t) const;
     void Show() const;
     Time operator+(const Time & t) const;
-};
+    Time operator-(const Time & t) const;
+    Time operator*(double mult) const;
+}; 
