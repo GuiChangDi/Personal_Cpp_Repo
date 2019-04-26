@@ -37,4 +37,5 @@ public:
     Time operator+(const Time & t) const;
     Time operator-(const Time & t) const;
     Time operator*(double mult) const;
+    friend Time operator*(double m, const Time & t);
 }; 

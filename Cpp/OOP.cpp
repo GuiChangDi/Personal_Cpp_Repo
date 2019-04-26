@@ -181,13 +181,21 @@ Time Time::operator*(double mult) const
     return sum;
 }
 
+Time operator*(double m, const Time & t)
+{
+    Time sum;
+    sum.minute = m* t.minute;
+    sum.hours = m* t.hours + sum.minute /60;
+    sum.minute %= 60;
+    return sum;
+}
+
 int main()
 {
     Time a(2,30);
-    Time b(3,20);
-    Time c  = b-a;
     Time d = a * 2;
-    c.Show();
+    Time e = 2*a;
     d.Show();
+    e.Show();
     return 0;
 }
