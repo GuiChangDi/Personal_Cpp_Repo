@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <iostream>
+using namespace std;
 
 class Stock
 {
@@ -38,4 +40,5 @@ public:
     Time operator-(const Time & t) const;
     Time operator*(double mult) const;
     friend Time operator*(double m, const Time & t);
+    friend ostream & operator<<(ostream & os, const Time & t);
 }; 

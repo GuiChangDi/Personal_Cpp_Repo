@@ -190,6 +190,12 @@ Time operator*(double m, const Time & t)
     return sum;
 }
 
+ostream & operator<<(ostream & os, const Time & t)
+{
+    os<<"Time: "<<t.hours<<" hours "<<t.minute<<" minutes";
+    return os;
+}
+
 int main()
 {
     Time a(2,30);
@@ -197,5 +203,6 @@ int main()
     Time e = 2*a;
     d.Show();
     e.Show();
+    cout<<d;
     return 0;
 }
