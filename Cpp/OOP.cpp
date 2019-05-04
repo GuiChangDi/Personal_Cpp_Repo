@@ -196,13 +196,18 @@ ostream & operator<<(ostream & os, const Time & t)
     return os;
 }
 
+Tennis::Tennis(const string & fn,const string & ln,bool ht) : firstname(fn), lastname(ln),hasTable(ht)
+    {
+    }
+
+void Tennis::Name()
+{
+    std::cout<<lastname<<", "<<firstname<<std::endl;
+}
+
 int main()
 {
-    Time a(2,30);
-    Time d = a * 2;
-    Time e = 2*a;
-    d.Show();
-    e.Show();
-    cout<<d;
+    Tennis s("gui","changdi");
+    s.Name();
     return 0;
 }

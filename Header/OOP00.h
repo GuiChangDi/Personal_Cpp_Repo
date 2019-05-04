@@ -41,4 +41,18 @@ public:
     Time operator*(double mult) const;
     friend Time operator*(double m, const Time & t);
     friend ostream & operator<<(ostream & os, const Time & t);
-}; 
+};
+
+using std::string;
+class Tennis
+{
+private:
+    string firstname;
+    string lastname;
+    bool hasTable;
+public:
+    Tennis(const string & fn = "None",const string & ln = "None",bool ht = false);
+    void Name();
+    bool HasTable() {return hasTable;};
+    void ResetTable(bool v) {hasTable = v;};
+};
