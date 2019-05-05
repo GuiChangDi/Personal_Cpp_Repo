@@ -205,9 +205,20 @@ void Tennis::Name()
     std::cout<<lastname<<", "<<firstname<<std::endl;
 }
 
+RatedPlayer::RatedPlayer(unsigned int r,const string & fn,const string & ln,bool ht) : Tennis(fn,ln,ht)
+{
+    rating = r;
+}
+
+RatedPlayer::RatedPlayer(unsigned int r,const Tennis & tp) : Tennis(tp), rating(r)
+{
+}
+
 int main()
 {
-    Tennis s("gui","changdi");
-    s.Name();
+    RatedPlayer s(10,"gui","changdi",false);
+    Tennis p;
+    p = s;
+    p.Name();
     return 0;
 }

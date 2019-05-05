@@ -56,3 +56,14 @@ public:
     bool HasTable() {return hasTable;};
     void ResetTable(bool v) {hasTable = v;};
 };
+
+class RatedPlayer:public Tennis
+{
+private:
+    unsigned int rating;
+public:
+    RatedPlayer ( unsigned int r = 0, const string & fn = "None",const string & ln = "None", bool ht = false);
+    RatedPlayer( unsigned int r, const Tennis & tp);
+    unsigned int Rating() const { return rating;};
+    void ResetRating ( unsigned int r) {rating = r;};
+};
