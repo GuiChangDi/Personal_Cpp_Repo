@@ -216,9 +216,16 @@ RatedPlayer::RatedPlayer(unsigned int r,const Tennis & tp) : Tennis(tp), rating(
 
 int main()
 {
-    RatedPlayer s(10,"gui","changdi",false);
-    Tennis p;
-    p = s;
-    p.Name();
+    Brass Gui("gui", 511135441, 5000.0);
+    BrassPlus Guihua("guihua",511135441,2000.0);
+    Gui.ViewAcct();
+    cout<<endl;
+    Guihua.ViewAcct();
+    cout<<endl;
+    Gui.Deposit(2000);
+    Gui.ViewAcct();
+    cout<<endl;
+    Guihua.Withdraw(2500);
+    Guihua.ViewAcct();
     return 0;
 }

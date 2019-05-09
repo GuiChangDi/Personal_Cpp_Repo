@@ -88,7 +88,7 @@ class BrassPlus: public Brass
 private:
     double maxLoan;
     double rate;
-    double owesBank;
+    double owesBank;//money owe to bank
 public:
     BrassPlus(const string & n = "None", long an = -1,double bal = 0.0, double ml = 500,double r = 0.11125);
     BrassPlus(const Brass & ba, double ml = 500,double r = 0.11125);
