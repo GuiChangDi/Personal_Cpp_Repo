@@ -222,10 +222,11 @@ int main()
     cout<<endl;
     Guihua.ViewAcct();
     cout<<endl;
-    Gui.Deposit(2000);
-    Gui.ViewAcct();
+    Brass &p = Gui;
+    Brass &q = Guihua;
+    p.ViewAcct();
     cout<<endl;
-    Guihua.Withdraw(2500);
-    Guihua.ViewAcct();
+    q.ViewAcct();
+    cout<<endl;
     return 0;
 }
