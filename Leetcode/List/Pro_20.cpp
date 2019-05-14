@@ -12,26 +12,40 @@ Note that an empty string is also considered valid.
 
 bool isValid(char *s)
 {
-    int length=0;//定义字符串长度
-    while(*(s+length))length++;//获取字符串长度
-    char* ptr=(char*)malloc(length/2);//分配内存空间
-    memset(ptr,0,length/2);//初始化内存空间
-    int i,a=0;
-    for(i=0;i<length;i++)
+    int length = 0;
+    while(*(s+length))  length++;
+    char *a = (char*)malloc(sizeof(length/2+1));
+
+    int top = -1;
+    for(int i = 0;i<length;i++)
     {
-        if((*(s+i)=='(')||(*(s+i)=='{')||(*(s+i)=='['))
+        if(s[i] == '(' || s[i] == '[' || s[i] == '{')
+            a[top++] = s[i];
+        else if(s[i] == ')')
         {
-            a++;
-            *(ptr+a)=*(s+i);
+            if(a[top] == '(')
+                a[--top] = '\0';
+            else 
+                return false;
         }
-        //'('与')'的ASCII值差1，'['与']'，'{'与'}'的ASCII值差2
-        else if((*(s+i)==(*(ptr+a)+1))||(*(s+i)==(*(ptr+a)+2)))
+
+        else if(s[i] == ']')
         {
-            a--;
+            if(a[top] == '[')
+                a[--top] = '\0';
+            else
+                return false;
         }
-        else return 0;
-}
-    if(a)
-    return 0;
-return 1;
+
+        else if(s[i] == '{')
+        {
+            if(a[top] == '}')
+                a[--top] = '\0';
+            else
+                return false;
+        }
+    }
+    if(top == -1)
+        return true;
+    return false;
 }
