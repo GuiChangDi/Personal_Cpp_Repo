@@ -1,12 +1,13 @@
 #include <iostream>
 #include <vector>
 #include <array>
+#include <string>
 
 template <class Type>
 class Stack
 {
 private:
-    enum {MAX = 10;};
+    enum {MAX = 10};
     Type items[MAX];
     int top;
 public:
@@ -41,8 +42,25 @@ bool Stack<Type>::pop(Type & item)
         return false;
 }
 
+template <class Type>
+bool Stack<Type>::push(const Type & item)
+{
+    if(top < MAX)
+    {
+        items[top++] = item;
+        return true;
+    }
+    else
+        return false;
+}
+
 int main()
 {
-    
+    Stack<int> kernels;
+    kernels.push(2);
+    int a;
+    kernels.pop(a);
+    std::cout<<a;
+    return 1;
 }
 
