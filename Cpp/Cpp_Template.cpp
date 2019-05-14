@@ -2,22 +2,47 @@
 #include <vector>
 #include <array>
 
-int* test();
+template <class Type>
+class Stack
+{
+private:
+    enum {MAX = 10;};
+    Type items[MAX];
+    int top;
+public:
+    Stack();
+    bool isempty();
+    bool isfull();
+    bool push(const Type & item);
+    bool pop(Type & item);
+};
+
+template <class Type>
+Stack<Type>::Stack()
+{
+    top = 0;
+}
+
+template <class Type>
+bool Stack<Type>::isempty()
+{
+    return top == MAX;
+}
+
+template <class Type>
+bool Stack<Type>::pop(Type & item)
+{
+    if(top > 0)
+    {
+        item = items[--top];
+        return true;
+    }
+    else
+        return false;
+}
 
 int main()
 {
-    using namespace std;
-    int *b = test();
-    cout<<b<<' '<<*b<<endl;
-    delete b;
-    cout<<b<<endl;
-    return 0;
+    
 }
 
-int* test()
-{
-    int* a = new int;
-    *a = 1;
-    std::cout<<a<<std::endl;
-    return a;
-}
