@@ -1,6 +1,8 @@
 #include "../Header/Order.h"
 #include <iostream>
 #include <string.h>
+#include <vector>
+#include <stack>
 
 //Time complexity = O(N)  
 int bucket(int a[], int n) {
@@ -179,7 +181,7 @@ void Catfish(int n)
 {
 	//initilize queue and stack
 	struct queue qu1, qu2;
-	struct stack s;
+	struct stack_internal s;
 	int mark[10];//array indicate current number we have
 	qu1.head = qu2.head = 1;
 	qu1.tail = qu2.tail = 1;
@@ -581,4 +583,59 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
         result = result->next;
     }
     return result;
+}
+using namespace std;
+static int RapidOrder_One_Round(vector<int> &v,int left,int right)
+{
+	int ref = v[left];
+	while(left < right)
+	{
+		while(left < right && v[right] > ref)
+			right--;
+		while(left < right && v[left] < ref)
+			left++;
+		int temp = v[left];
+		v[left] = v[right];
+		v[right] = temp;
+	}
+	v[left] = ref;
+	return left;
+}
+
+void RapidOrder_NoRecursive(vector<int> &v,int left,int right)
+{
+	
+	stack<int> st;
+	if(left < right)
+	{
+		int mid = RapidOrder_One_Round(v,left,right);
+		if(left < mid-1)
+		{
+			st.push(left);
+			st.push(mid-1);
+		}
+		if(right > mid + 1)
+		{
+			st.push(mid+1);
+			st.push(right);
+		}
+		while(!st.empty()){
+			int q = st.top();
+			st.pop();
+			int p = st.top();
+			st.pop();
+			mid = RapidOrder_One_Round(v,p,q);
+			if(p<mid-1)
+			{
+				st.push(p);
+				st.push(mid-1);
+			}
+			if(q>mid+1)
+			{
+				st.push(q);
+				st.push(mid+1);
+			}
+		}
+	}
+
 }
