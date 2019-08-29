@@ -19,7 +19,7 @@ struct node
 	struct node *next;
 };
 
-int bucket(int a[], int n);
+void bucket();
 int bubble(int a[], int n);
 int rapidorder(int a[], int left, int right);//Make order
 int removemutli(int a[], int n);
