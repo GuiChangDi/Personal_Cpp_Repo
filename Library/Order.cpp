@@ -4,39 +4,6 @@
 #include <vector>
 #include <stack>
 
-//Rapid order Time complexity: MAX O(N^2), Average O(NlogN)
-int rapidorder(int a[],int left, int right)
-{
-	int temp, i, j, refer;
-	if (left >= right)
-		return 0;
-
-	i = left;
-	j = right;
-	refer = a[left];
-
-	while (i != j)
-	{
-		while (a[j] >= refer && i<j)
-			j--;
-		while (a[i] <= refer && i<j)
-			i++;
-		if (i < j)
-		{
-			temp = a[i];
-			a[i] = a[j];
-			a[j] = temp;
-		}
-	}
-	a[left] = a[i];
-	a[i] = refer;
-
-	//recursion
-	rapidorder(a, left, i - 1);
-	rapidorder(a, i + 1, right);
-	return 1;
-}
-
 //Remove repeat elem in array and sort
 int removemutli(int a[], int n)
 {
@@ -506,59 +473,4 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
         result = result->next;
     }
     return result;
-}
-using namespace std;
-static int RapidOrder_One_Round(vector<int> &v,int left,int right)
-{
-	int ref = v[left];
-	while(left < right)
-	{
-		while(left < right && v[right] > ref)
-			right--;
-		while(left < right && v[left] < ref)
-			left++;
-		int temp = v[left];
-		v[left] = v[right];
-		v[right] = temp;
-	}
-	v[left] = ref;
-	return left;
-}
-
-void RapidOrder_NoRecursive(vector<int> &v,int left,int right)
-{
-	
-	stack<int> st;
-	if(left < right)
-	{
-		int mid = RapidOrder_One_Round(v,left,right);
-		if(left < mid-1)
-		{
-			st.push(left);
-			st.push(mid-1);
-		}
-		if(right > mid + 1)
-		{
-			st.push(mid+1);
-			st.push(right);
-		}
-		while(!st.empty()){
-			int q = st.top();
-			st.pop();
-			int p = st.top();
-			st.pop();
-			mid = RapidOrder_One_Round(v,p,q);
-			if(p<mid-1)
-			{
-				st.push(p);
-				st.push(mid-1);
-			}
-			if(q>mid+1)
-			{
-				st.push(q);
-				st.push(mid+1);
-			}
-		}
-	}
-
 }
