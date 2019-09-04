@@ -40,7 +40,7 @@ int main(
   char* argv[]
 )
 {
-  permutation(1,5);
+  permutation(1,3);
   std::cin.get();
   std::cin.get();
   return 0;
