@@ -2,7 +2,7 @@
   "tasks": [
     {
       "type": "shell",
-      "label": "g++.exe build active file",
+      "label": "g++",
       "command": "C:\\MinGW\\bin\\g++.exe",
       "args": [
         "-g",
