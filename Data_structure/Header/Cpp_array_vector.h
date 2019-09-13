@@ -58,5 +58,5 @@ public:
   int uniquify();//remove the duplicate elem in order
   //travel array
   void traverse(void (*)(T));//Traverse,use function pointer
-  template <typename P> void traverse(&P);
+  template <typename P> void traverse(P&);//Traverse,use function reference
 };
