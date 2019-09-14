@@ -42,7 +42,7 @@ public:
   Rank find(T const& e, Rank lo, Rank hi) const;//No-order find in [lo,hi]
   Rank search(T const& e) const//Order find in [0,_size]
   { return (0 >= _size) ? -1: search(e,0,_size);}
-  Rank search(T const& e, Rank lo, Rank hi) const;
+  Rank search(T const& e, Rank lo, Rank hi) const;//Order find in [lo,hi]
   //Writeable api
   T& operator[](Rank r) const;//overload [],make Vector can use like Vector[]
   Vector<T> & operator=(Vector<T> const&);//overload =

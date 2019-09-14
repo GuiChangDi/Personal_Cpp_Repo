@@ -4,8 +4,7 @@ using namespace std;
 
 template <typename T>
 void
-Vector<T>::
-copyFrom(T const *A, Rank lo, Rank hi){
+Vector<T>::copyFrom(T const *A, Rank lo, Rank hi){
   _elem = new T[_capacity = 2*(hi-lo)];
   _size = 0;
   while(lo < hi)
@@ -14,8 +13,7 @@ copyFrom(T const *A, Rank lo, Rank hi){
 
 template <typename T>
 Vector<T>&
-Vector<T>::
-operator=(Vector<T> const &V){
+Vector<T>::operator=(Vector<T> const &V){
   if (_elem) delete [] _elem;
   copyFrom(V._elem,0,V.size());
   return *this;
@@ -23,8 +21,7 @@ operator=(Vector<T> const &V){
 
 template <typename T>
 void
-Vector<T>::
-expand(){
+Vector<T>::expand(){
   if (_size < _capacity) return;//No need to expand
   if (_capacity < DEFAULT_CAPACITY) _capacity = DEFAULT_CAPACITY;
   T* oldElem = _elem;
@@ -36,8 +33,7 @@ expand(){
 
 template <typename T>
 void
-Vector<T>::
-shrink(){
+Vector<T>::shrink(){
   if (_capacity < DEFAULT_CAPACITY << 1) return;
   if (_size << 2 > _capacity) return;
   T* oldElem = _elem;
@@ -49,15 +45,13 @@ shrink(){
 
 template <typename T>
 T&
-Vector<T>::
-operator[](Rank r) const{
+Vector<T>::operator[](Rank r) const{
   return _elem[];
 }
 
 template <typename T>
 void
-Vector<T>::
-unsort(Rank lo,Rank hi){
+Vector<T>::unsort(Rank lo,Rank hi){
   T* V = _elem + low;
   for (Rank i = hi - low; i > 0;i--)
     swap(V[i - 1], V[rand() % i]);//swap V[i - 1] to V[0,i)
@@ -77,16 +71,14 @@ static bool eq(T& a,T& b) { return a == b;}
 
 template <typename T>
 Rank
-Vector<T>::
-find(T const &e, Rank lo, Rank hi) const{
+Vector<T>::find(T const &e, Rank lo, Rank hi) const{
   while((lo < hi--) && (e != _elem[hi]))
   return hi;
 }
 
 template <typename T>
 Rank
-Vector<T>::
-insert(Rank r, T const &e){
+Vector<T>::insert(Rank r, T const &e){
   expand();
   for(int i= _size ;i > r; i--)
     _elem[i] = _elem[i - 1];
@@ -96,8 +88,7 @@ insert(Rank r, T const &e){
 
 template <typename T>
 int
-Vector<T>::
-remove(Rank lo, Rank hi){
+Vector<T>::remove(Rank lo, Rank hi){
   if (lo == hi) return 0;
   while(hi < _size) _elem[lo++] = _elem[hi++];
   _size = lo;
@@ -107,8 +98,7 @@ remove(Rank lo, Rank hi){
 
 template <typename T>
 T
-Vector<T>::
-remove(Rank r){
+Vector<T>::remove(Rank r){
   T e = _elem[r];
   remove(r, r+1);
   return e;
@@ -116,8 +106,7 @@ remove(Rank r){
 
 template <typename T>
 int
-Vector<T>::
-deduplicate(){
+Vector<T>::deduplicate(){
   int oldSize = _size;
   Rank i = 1;
   while (i < _size)
@@ -127,8 +116,7 @@ deduplicate(){
 
 template <typename T>
 void
-Vector<T>::
-traverse(void (*visit)(T)){
+Vector<T>::traverse(void (*visit)(T)){
   for(int i=0;i< _size;i++)
     visit(_elem[i]);
 }
@@ -136,8 +124,7 @@ traverse(void (*visit)(T)){
 template <typename T>
 template <typename P>
 void
-Vector<T>::
-traverse(P& visit){
+Vector<T>::traverse(P& visit){
   for(int i=0;i< _size;i++)
     visit(_elem[i]);
 }
@@ -155,8 +142,7 @@ increase(Vector<T> &V)
 //Return the number of disorder elem, return 0 - all elem are order list
 template <typename T>
 int
-Vector<T>::
-disordered() const {
+Vector<T>::disordered() const {
   int n = 0;
   for (int i=1; i < _size ;i++)
     if ( _elem[i] > _elem[i+1]) n++;
@@ -165,8 +151,7 @@ disordered() const {
 
 template <typename T>
 int
-Vector<T>::
-uniquify(){
+Vector<T>::uniquify(){
   Rank i = 0, j = 0;
   while (++j < _size)
     if (_elem[i] != _elem[j])
@@ -178,7 +163,8 @@ uniquify(){
 
 template <typename T>
 static
-Rank binSearch(T* A, T const& e, Rank lo, Rank hi){
+Rank 
+binSearch(T* A, T const& e, Rank lo, Rank hi){
   while(lo < hi){
     Rank mid = (hi-lo)/2;
     if (A[mid] == e)
@@ -193,10 +179,8 @@ Rank binSearch(T* A, T const& e, Rank lo, Rank hi){
 
 template <typename T>
 Rank
-Vector<T>::
-search(T const& e, Rank lo, Rank hi) const {
-  return (rand() % 2) ? //50% to use
-    binSearch(_elem, e, lo, hi) : fibSearch(_elem, e, lo, hi);//use binary search or Fibonacci search
+Vector<T>::search(T const& e, Rank lo, Rank hi) const {
+  return binSearch(_elem, e, lo, hi);//use binary search
 }
 
 
