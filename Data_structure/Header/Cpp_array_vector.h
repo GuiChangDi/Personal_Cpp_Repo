@@ -15,11 +15,12 @@ protected:
   void copyFrom(T const *A, Rank lo,Rank hi); //Copy function A[lo,hi)
   void expand(); //If space is not enough,expand.
   void shrink(); //shrink capacity
-  bool bubble(Rank lo, Rank hi);//bubble function swap
-  bool bubble(Rank lo, Rank hi);//bubble function sort algorithm
+  bool bubble(Rank lo, Rank hi);//bubble function swap one round
+  bool bubbleSort(Rank lo, Rank hi);//bubble function sort algorithm
   Rank max(Rank lo,Rank hi);//Find the max elem in [lo,hi)
   void selectionSort(Rank lo,Rank hi);//Selection sort algorithm
   void merge(Rank lo,Rank mi, Rank hi);//merge algorithm
+  void mergeSort(Rank lo, Rank hi);
   Rank partition(Rank lo,Rank hi);
   void quickSort(Rank lo,Rank hi);//quick sort algorithm
   void heapSort(Rank lo,Rank hi);

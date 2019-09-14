@@ -183,15 +183,63 @@ Vector<T>::search(T const& e, Rank lo, Rank hi) const {
   return binSearch(_elem, e, lo, hi);//use binary search
 }
 
-
-
-int
-main(
-  int argc,
-  char* argv[]
-)
-{
-  cin.get();
-  cin.get();
-  return 0;
+template <typename T>
+void
+Vector<T>::sort(Rank lo, Rank hi){
+  switch(rand() % 5){//choose algorithm randomly
+    case 1: bubbleSort(lo, hi); break;
+    case 2: selectionSort(lo, hi); break;
+    case 3: mergeSort(lo, hi); break;
+    case 4: heapSort(lo, hi); break;
+    default: quickSort(lo, hi) break;
+  }
 }
+
+//bubble sort for one round
+template <typename T>
+bool
+Vector<T>::bubble(Rank lo, Rank hi){
+  bool sorted = true;
+  while(++lo < hi){
+    if (_elem[lo - 1] > _elem[lo]){
+      sorted = false;
+      swap(_elem[lo - 1], _elem[lo]);
+    }
+  }
+  return sorted;
+}
+
+//bubble sort main function
+template <typename T>
+bool
+Vector<T>::bubbleSort(Rank lo, Rank hi){
+  while(!buble(lo, hi--));
+}
+
+template <typename T>
+void
+Vector<T>::mergeSort(Rank lo, Rank hi){
+  if (hi - lo < 2) return;//end recursize: hi - lo = 1
+  int mi = (lo + hi) >> 1;//recursive from mid.
+  mergeSort(lo, mi);
+  mergeSort(mi ,hi) ;
+  merge(lo, mi, hi);
+}
+
+template <typename T>
+void
+Vector<T>::merge(Rank lo, Rank mi, Rank hi){//take mi as border, [lo, mi) [mi, hi)
+  T* A = _elem + lo;//A[lo, hi - lo) = _elem[lo, hi)
+  int lb = mi - lo;
+  T* B = new T[lb];//front vector B[0, lb) = _elem[lo, mi)
+  for (Rank i = 0; i < lb; B[i] = A[i++]);//copy front vector
+  int lc = hi - mi;
+  T* C = _elem + mi;//behind vector C[0, lc) = _elem[mi, hi)
+  for (Rank i = 0, j = 0, k = 0; (j < lb) || (k < lc);){//put the smaller in B[j],C[k] to the end of A
+    if ( (j < lb) && ( !(k < lc) || (B[j] <= C[k]) ) )
+      A[i++] = B[j++];
+    if ( (k < lc) && ( !(j < lb) || (C[k] < B[j]) ) )
+      A[i++] = C[k++];
+  }
+  delete [] B;
+}//get the whole sorted vector [lo, hi)
