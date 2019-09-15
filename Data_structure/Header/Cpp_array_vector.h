@@ -2,6 +2,7 @@
   The Vector treat as array.
   Use Cpp class to pacakge as Vector
 */
+#pragma once
 typedef int Rank;//Can be treat as index of array
 #define DEFAULT_CAPACITY 3 //default size
 
