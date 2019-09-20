@@ -62,7 +62,7 @@ public:
   ListNodePosi(T) find(T const &e, int n, ListNodePosi(T) p) const;//List find No-order in section
   ListNodePosi(T) search(T const &e) const//List search in order
   { return search(e, _size, trailer); }
-  ListNodePosi(T) search(T const &e, int n, ListNodePosi(T) p) const;
+  ListNodePosi(T) search(T const &e, int n, ListNodePosi(T) p) const;//Find q <= e in Node p's n number predNode
   ListNodePosi(T) selectMax(ListNodePosi(T) p, int n);//find Max in p and next n-1 node
   ListNodePosi(T) selectMax() { return selectMax(header->succ, _size); }//find max in whole List
   //Write api
