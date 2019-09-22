@@ -1,3 +1,4 @@
+#pragma once
 #include "Cpp_array_vector.h"
 template <typename T>
 class Stack: public Vector<T>{
