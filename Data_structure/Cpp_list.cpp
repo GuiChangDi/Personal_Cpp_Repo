@@ -191,7 +191,7 @@ template <typename T>
 ListNodePosi(T)
 List<T>::selectMax(ListNodePosi(T) p, int n){
   ListNodePosi(T) max = p;
-  for (ListNodePosi9T) cur = p; 1 < n; n--)
+  for (ListNodePosi(T) cur = p; 1 < n; n--)
     if (!lt((cur = cur->succ)->data, max->data))
       max = cur;
   return max;
