@@ -11,3 +11,19 @@ convert(Stack<char> &S, int64_t n, int base){
     n /= base;
   }
 }
+
+//use stack to determine experssion whether layout correct
+bool
+paren(const char exp[], int lo, int n){
+  Stack<char> s;
+  for (int i = 0; exp[i] ; i++){
+    switch(exp[i]){
+      case '(': case '[': case '{': s.push(exp[i]); break;
+      case ')': if( (s.empty()) || (s.pop() != ')') ) return false; break;
+      case ']': if( (s.empty()) || (s.pop() != ']') ) return false; break;
+      case '}': if( (s.empty()) || (s.pop() != '}') ) return false; break;
+      defalut: break;//ingore normal chara
+    }
+  }
+  return s.empty();//If stack is empty ,expression layout correct
+}
