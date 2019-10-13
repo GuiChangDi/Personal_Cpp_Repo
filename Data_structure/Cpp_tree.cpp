@@ -24,7 +24,7 @@ BinNode<T>::travIn(VST &visit) {
 template <typename T>
 int
 BinTree<T>::updateHeight(BinNodePosi(T) x)//update node x height
-{ return x0=->height = 1 + max(stature(x->lChild), stature(x->rChild)); }
+{ return x=->height = 1 + max(stature(x->lChild), stature(x->rChild)); }
 
 template <typename T>
 void
