@@ -24,7 +24,7 @@ BinNode<T>::travIn(VST &visit) {
 template <typename T>
 int
 BinTree<T>::updateHeight(BinNodePosi(T) x)//update node x height
-{ return x0=->height = 1 + max(stature(x->lChild), stature(x->rChild)); }
+{ return x=->height = 1 + max(stature(x->lChild), stature(x->rChild)); }
 
 template <typename T>
 void
@@ -166,8 +166,8 @@ BinNode<T>::succ() {
   if (rChild) { //若有右孩子，则直接后继必在右子树中，具体地就是
     s = rChild; //右子树中
   while (HasLChild(*s)) s = s->lChild; //最靠左（最小）的节点
-  } else { //否则，直接后继应是“将当前节点包含于其左子树中癿最低祖先”，具体地就是
-    while (IsRChild(*s)) s = s->parent; //逆向地沿右向分支，不断朝左上斱移动
+  } else { //否则，直接后继应是“将当前节点包含于其左子树中的最低祖先”，具体地就是
+    while (IsRChild(*s)) s = s->parent; //逆向地沿右向分支，不断朝左上方移动
     s = s->parent; //最后再朝右上方移动一步，即抵达直接后继（如果存在）
   }
   return s;
