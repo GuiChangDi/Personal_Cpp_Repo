@@ -25,7 +25,7 @@ private:
 public:
   //vertex
   int n; //vertex number
-  virtual int insert(Tv const &) = 0; //Insert vertex,return number
+  virtual int insert(Tv const&) = 0; //Insert vertex,return number
   virtual Tv remove(int n) = 0; //delete vertex and its relate edge,return vertex data
   virtual Tv& vertex(int n) = 0; //vertex data
   virtual int inDegree(int n) = 0; //vertex 入度in-degree
@@ -40,7 +40,7 @@ public:
   //edge 约定，无向边均同一转化为方向互逆的一对有向边，从而将无向图视作有向图的特例
   int e; //edge number
   virtual bool exists(int v, int u) = 0; //edge(v,u) whether exists
-  virtual bool insert(Te const&, int, int, int) = 0; //Insert edge e(weight w) between vertex v and u
+  virtual void insert(Te const&, int, int, int) = 0; //Insert edge e(weight w) between vertex v and u
   virtual EStatus& status(int v, int u); //edge(v,u) 's status
   virtual Te& edge(int v, int u) = 0; // edge(v,u) 's data
   virtual int& weight(int v, int u) = 0; //edge(v,u) 's weight

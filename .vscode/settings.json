@@ -3,6 +3,7 @@
     "utility": "cpp",
     "stack": "cpp",
     "iostream": "cpp",
-    "iosfwd": "cpp"
+    "iosfwd": "cpp",
+    "xstring": "cpp"
   }
 }

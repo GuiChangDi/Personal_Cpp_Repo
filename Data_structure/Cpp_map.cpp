@@ -8,7 +8,7 @@ main(
   char* argv[]
 )
 {
-  Graph G(UDG);
+  GraphMatrix<int,int> G;
 
   cout<<endl;
 }
