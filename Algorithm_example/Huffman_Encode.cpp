@@ -67,7 +67,7 @@ struct MinHeap* createMinHeap(unsigned capacity)
 	minHeap->array 
 		= (struct MinHeapNode**)malloc(minHeap-> 
 capacity * sizeof(struct MinHeapNode*)); 
-	return minHeap; 
+	return minHeap;
 } 
 
 // A utility function to 
