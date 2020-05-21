@@ -18,4 +18,4 @@ ffmpeg -i INPUT.mp4 -crf 18 -preset 6 -tune film -r 60 -s 1920x1080 -pix_fmt yuv
 
 ffmpeg -y -i INPUT.mp4 -pass 2 -b:v 5800k -preset 6 -tune film -r 60 -s 1920x1080 -pix_fmt yuv420p -profile:v high -level 4.2 -g 590 -keyint_min 1 -maxrate 22M -bufsize 44M OUTPUT.mp4
 
-bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/centos_install_v2ray.sh)
+bash <(curl -L -s https://raw.githubusercontent.com/GuiChangDi/Personal_Cpp_Repo/master/v2ray_install.sh)
