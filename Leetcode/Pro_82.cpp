@@ -3,6 +3,7 @@
  *  leaving only distinct numbers from the original list.
  * */
 #define NULL 0
+#include <iostream>
 
 struct ListNode {
     int val;

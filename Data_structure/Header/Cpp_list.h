@@ -54,7 +54,7 @@ public:
   T& operator[](Rank r) const;//overload, support traverse from Rank (low effciency)
   ListNodePosi(T) first() const { return header->succ; }//first node position
   ListNodePosi(T) last() const { return trailer->pred; }//last node position
-  bool valid(ListNodePosi(T) p);//position p whether valid
+  bool valid(ListNodePosi(T) p)//position p whether valid
   { return p && (trailer != p) && (header != p); }
   int disordered() const; //judge whether list have ordered
   ListNodePosi(T) find(T const &e) const//List find NO-order

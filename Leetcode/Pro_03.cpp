@@ -48,3 +48,12 @@ int lengthOfLongestSubstring(char * s){
     return count>max?count:max;
 }
 */
+int main()
+{
+  class Solution a;
+  string s = "abcabcbb";
+  int b = a.lengthOfLongestSubstring(s);
+  std::cout<<b<<std::endl;
+  std::cin.get();
+  return 0;
+}

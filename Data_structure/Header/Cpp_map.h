@@ -19,7 +19,7 @@ private:
   }
   void BFS(int, int &);//(connected domain)BFS algorithm
   void DFS(int, int &);//(connected domain)DFS algorithm
-  void BCC(int, int &, Stack<int> &)//(connected domain)基于DFS的双连通分量分解算法
+  void BCC(int, int &, Stack<int> &);//(connected domain)基于DFS的双连通分量分解算法
   bool TSort(int, int &, Stack<Tv> *);//(connected domain)基于DFS的拓扑排序算法
   template <typename PU> void PFS(int, PU);//(connected domain)优先级搜索框架
 public:
@@ -70,7 +70,7 @@ template <typename Te> struct Edge {
   Te data; //data
   int weight; //weight
   EStatus status; //status
-  Edege(Te const& d, int w) : data(d), weight(w), status(UNDETERMINED) {} //create new edge
+  Edge(Te const& d, int w) : data(d), weight(w), status(UNDETERMINED) {} //create new edge
 };
 
 template <typename Tv, typename Te> //Vertex type, Edge type
@@ -122,14 +122,14 @@ public:
   virtual Te& edge(int i, int j) { return E[i][j]->data; } //Edge(i, j) 's data
   virtual int& weight(int i, int j) { return E[i][j]->weight; } //Edge(i,j) 's weight
   //Edge's dynamic operate
-  virtual void insert(Te const& edge, int w, int i, int j){ //insert Edge e = (i, j) weight w
+  virtual void insert(Te const& edge, int w, int i, int j) { //insert Edge e = (i, j) weight w
     if（exists(i, j)) return; //make sure edge doesn't exists
     E[i][j] = new Edge<T>(edge，w); //create new edge
     //Update edge number and Degree
-    e++; 
+    e++;
     V[i].outDegree++;
     V[j].inDegree++;
-  }
+    }
   virtual Te remove(int i, int j) {
     Te eBak = edge(i, j); //store edge's data
     delete E[i][j]; //delete edge

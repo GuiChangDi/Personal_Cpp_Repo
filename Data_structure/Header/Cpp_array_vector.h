@@ -32,13 +32,13 @@ public:
   {_elem = new T[_capacity = c]; for(_size = 0;_size < s; _elem[_size++] = v);}
   Vector(T const* A, Rank lo, Rank hi) {copyFrom(A,lo,hi);}//array copy [lo,hi)
   Vector(T const* A, Rank n) {copyFrom(A,0,n);}//array copy [0,n)
-  Vector(Vector<T> const& V,Rank lo,hi) {copyFrom(V._elem,lo,hi);}
+  Vector(Vector<T> const& V,Rank lo,Rank hi) {copyFrom(V._elem,lo,hi);}
   Vector(Vector<T> const& V) {copyFrom(V._elem,0,V._size);}
   //Destructor
   ~Vector() { delete [] _elem;}
   //Read-only api
-  Rank size() const {return _size}//Display size
-  bool empty() const {return !_size}//Display whether empty
+  Rank size() const { return _size; }//Display size
+  bool empty() const { return !_size; }//Display whether empty
   int disordered() const;//Judge vector whether sorted
   Rank find(T const& e) const { return find(e,0, _size);}//No-order find in [0,_size]
   Rank find(T const& e, Rank lo, Rank hi) const;//No-order find in [lo,hi]
