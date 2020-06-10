@@ -6,15 +6,16 @@ int
 BinarySearch(
 	int a[],
 	int x,
+	int l,
 	int n
 )
 {
-	int low = 0;
-	int high = n;
+	int low = l;
+	int high = n-1;
 	int mid;
 	while (low < high)
 	{
-		mid = (high - low) / 2;
+		mid = (high + low) / 2;
 		if (a[mid] <= x)
 			low = mid + 1;
 		if (a[mid] > x)
@@ -31,7 +32,7 @@ int main(
 )
 {
 	int a[10] = { 1,3,5,7,9,11,13,15,17,19 };
-	int b = BinarySearch(a, 11, 10);
+	int b = BinarySearch(a, 11, 2, 9);
 	std::cout << b << std::endl;
 	std::cin.get();
 	std::cin.get();
