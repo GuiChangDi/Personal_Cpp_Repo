@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS//use this define to avoid warning on vs compile or use scanf_s instead of scanf
 #include <cstdio>
 
 const int MAXSIZE = 10;
@@ -7,7 +8,7 @@ int main()
     int sum[MAXSIZE] = {0};
     int k,j, MAX, n;
     printf("Input n:");
-    scanf_s("%d", &n);
+    scanf("%d", &n);
     for (int i = 0; i < n; i++){
         printf("Input the %d number and score:", i);
         scanf_s("%d%d", &k, &j);

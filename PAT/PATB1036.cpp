@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS//use this define to avoid warning on vs compile or use scanf_s instead of scanf
 #include <cstdio>
 
 int main()
@@ -5,7 +6,7 @@ int main()
     int n, l;
     char s;
     printf("Input n and character:");
-    scanf_s("%d %c", &n,&s);
+    scanf("%d %c", &n,&s);
     if ((n%2) == 0) l = n/2;
     else l = n/2 + 1;
 

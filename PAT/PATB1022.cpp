@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS//use this define to avoid warning on vs compile or use scanf_s instead of scanf
 #include <cstdio>
 
 int main()
@@ -5,8 +6,7 @@ int main()
     int a,b,c;
     int num[10];
     int n, i;
-    scanf_s("%d %d %d", &a, &b, &n);
-    c = a + b;
+    scanf("%d %d %d", &a, &b, &n);
     i = 0;
     do{
         num[i++] = c % n;
