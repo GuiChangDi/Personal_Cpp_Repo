@@ -5,7 +5,7 @@ int main()
     int a,b,c;
     int num[10];
     int n, i;
-    scanf("%d %d %d", &a, &b, &n);
+    scanf_s("%d %d %d", &a, &b, &n);
     c = a + b;
     i = 0;
     do{

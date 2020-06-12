@@ -7,10 +7,10 @@ int main()
     int sum[MAXSIZE] = {0};
     int k,j, MAX, n;
     printf("Input n:");
-    scanf("%d", &n);
+    scanf_s("%d", &n);
     for (int i = 0; i < n; i++){
         printf("Input the %d number and score:", i);
-        scanf("%d%d", &k, &j);
+        scanf_s("%d%d", &k, &j);
         sum[k] += j;
     }
     MAX = 0;

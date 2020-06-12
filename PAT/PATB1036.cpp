@@ -5,7 +5,7 @@ int main()
     int n, l;
     char s;
     printf("Input n and character:");
-    scanf("%d %c", &n,&s);
+    scanf_s("%d %c", &n,&s);
     if ((n%2) == 0) l = n/2;
     else l = n/2 + 1;
 
