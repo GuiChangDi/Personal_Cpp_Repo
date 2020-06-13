@@ -4,10 +4,12 @@
 
 int main()
 {
-	char str[90] = {0};
-	char s[90][90] = {0};
+	char str[90];
+	char s[90][90];
+    memset(str,0,sizeof(str));
+    memset(s,0,sizeof(s));
 	gets(str);
-    gets_s(str);//use gets_s on visual studio
+    //gets_s(str);//use gets_s on visual studio
 	int len = strlen(str);
 	int l = 0, h = 0;
 	for (int i = 0; i < len; i++) {
