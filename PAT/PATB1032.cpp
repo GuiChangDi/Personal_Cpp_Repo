@@ -11,7 +11,7 @@ int main()
     scanf("%d", &n);
     for (int i = 0; i < n; i++){
         printf("Input the %d number and score:", i);
-        scanf_s("%d%d", &k, &j);
+        scanf("%d%d", &k, &j);
         sum[k] += j;
     }
     MAX = 0;

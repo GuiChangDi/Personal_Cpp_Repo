@@ -8,12 +8,13 @@ int main()
 	char s[90][90];
     memset(str,0,sizeof(str));
     memset(s,0,sizeof(s));
-	gets(str);
+	fgets(str, sizeof(str), stdin);
     //gets_s(str);//use gets_s on visual studio
 	int len = strlen(str);
+	str[len-1] = '\0';//Remove the end '\n' due to fgets() will add '\n' on the end of str
 	int l = 0, h = 0;
 	for (int i = 0; i < len; i++) {
-		if (str[i] != ' ') {
+		if ((str[i] != ' ') && (str[i] != '\n')) {
 			s[l][h] = str[i];
 			h++;
 		}
