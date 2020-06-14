@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 
+//选择排序
 void ChooseOrder(int a[],int n) {
 	int temp = 0;
 	for (int i = 0; i < n; i++) {
