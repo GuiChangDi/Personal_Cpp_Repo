@@ -1,40 +1,28 @@
-#include <iostream>
+#include <cstdio>
 
-//BinarySearch no recursive, Time complexity = O(logN)
-//return the index of element
-int
-BinarySearch(
+int binary_search(
 	int a[],
-	int x,
-	int l,
-	int n
-)
-{
-	int low = l;
-	int high = n-1;
-	int mid;
-	while (low < high)
-	{
-		mid = (high + low) / 2;
-		if (a[mid] <= x)
+	int n,
+	int low,
+	int high
+) {
+	int temp = 0;
+	int mid = 0;
+	while (low <= high) {
+		mid = (high - low)/2 + low;
+		if (a[mid] > n)
+			high = mid - 1;
+		if (a[mid] < n)
 			low = mid + 1;
-		if (a[mid] > x)
-			high = mid;
-		if (a[mid] == x)
+		if (a[mid] == n)
 			return mid;
 	}
-	return 0;
+	return -1;
 }
 
-int main(
-	int     argc,
-	char    *argv[]
-)
-{
-	int a[10] = { 1,3,5,7,9,11,13,15,17,19 };
-	int b = BinarySearch(a, 11, 2, 9);
-	std::cout << b << std::endl;
-	std::cin.get();
-	std::cin.get();
+int main() {
+	int a[] = { 1,5,7,9,13,16,22,33,65 };
+	int b = binary_search(a, 16, 0, sizeof(a)/sizeof(a[0])-1);
+	printf("%d", b);
 	return 0;
 }
