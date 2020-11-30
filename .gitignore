@@ -1,5 +1,5 @@
 # ignore vscode configure
-#.vscode/
+.vscode/
 *.exe
 *.out
 .DS_Store
